@@ -15,9 +15,11 @@
     --key-shadow-400:  hsl(35, 11%, 61%);
 
     /* Text  */
-    --text-100: hsl(0, 0, 100%);
+    --text-100: hsl(0, 0%, 100%);
+    --text-200: hsl(0, 0%, 100%);
     --text-400: hsl(60, 10%, 39%);
     --text-500: hsl(60, 10%, 19%);
+    --text-600: hsl(60, 10%, 19%);
 
     --ff-primary: 'League Spartan', sans-serif;
 
@@ -37,6 +39,7 @@
 
     --ff-transition: all 1s ease;
 }
+
 .theme-2 {
         /* This is Theme the | */
         --bg:  hsl(222, 26%, 31%);
@@ -53,8 +56,10 @@
     
         /* Text  */
         --text-100: hsl(221, 14%, 31%);
+        --text-200: hsl(30, 25%, 89%);
         --text-400: rgb(255, 255, 255, 0.85);
         --text-500: white;
+        --text-600: hsl(221, 14%, 31%);
 }
 
 .theme-3 {
@@ -73,8 +78,10 @@
     
         /* Text  */
         --text-100: hsl(0, 0, 100%);
+        --text-200: hsl(52, 100%, 62%);
         --text-400: hsl(52, 100%, 82%);
         --text-500: hsl(52, 100%, 62%);
+        --text-600: hsl(52, 100%, 62%);
         --text-700: hsl(198, 20%, 13%);
 }
 
@@ -301,13 +308,16 @@ body {
   border: none;
   outline: none;
   border-radius: 0.5rem;
+  color: var(--text-600);
+  background: var(--key-bg-400);
   transition: var(--ff-transition);
   border-bottom: 4px solid var(--key-shadow-400);
 }
+
 @media (min-width: 30em) {
   .btn-grid > button:hover {
-    background-color: var(--hover-bg);
-    transform: translateY(-5px);
+    /* background-color: var(--bg); */
+    transform: translateY(-3px);
   }
 }
 .span-2 {
@@ -328,4 +338,20 @@ body {
 }
 .attribution a:hover {
   color: var(--key-shadow);
+}
+
+
+/* Background Utility Classes  */
+
+.key-bg-two {
+  background: var(--toggle-btn-bg) !important;
+  border-color: var(--key-shadow-500) !important;
+  color: var(--key-bg-400) !important;
+  transition: var(--ff-transition);
+}
+.key-bg {
+  background: var(--key-bg) !important;
+  border-color: var(--key-shadow) !important;
+  color: var(--text-200) !important;
+  transition: var(--ff-transition);
 }
