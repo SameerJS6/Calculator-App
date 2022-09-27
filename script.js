@@ -12,7 +12,7 @@ class Calculator {
     }
 
     delete() {
-
+        this.CurrentOperandElement = this.CurrentOperandElement.toString().slice(0, -1)
     }
 
     Append(number) {
@@ -60,6 +60,10 @@ AllClear.addEventListener('click', ()=> {
         calculator.UpdateDisplay()
 })
 
+DeleteButton.addEventListener('click', ()=> {
+        calculator.delete()
+        calculator.UpdateDisplay()
+})
 toggleBtn.addEventListener('click', ()=> {
     if(toggleBtn.classList.contains('toggle-center')) {
         console.log("hellor")
