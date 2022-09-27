@@ -158,10 +158,10 @@ select {
 /* General Styling  */
 body {
     display: grid;
-    width: 100%;
+    /* width: 100%; */
 	  max-width: 1440px;
     /* width: 95%; */
-    /* margin-inline: auto; */
+    margin-inline: auto;
     min-height: 100vh;
     place-content: center;
     background: var(--bg);
@@ -169,7 +169,7 @@ body {
     transition: var(--ff-transition);
 }
 .main-container {
-  width: 300px;
+  /* width: 300px; */
 	max-width: 1440px;
   margin-inline: 1rem;
   outline:2px solid red;
@@ -232,18 +232,37 @@ body {
 }
 
 /* Main-Calculator  */
-
+.calculator-grid {
+  display: grid;
+  grid-template-rows: minmax(100px, auto) ;
+  /* grid-template-columns: 60px; */
+}
+/* @media (min-width: 40em) {
+  .calculator-grid {
+    grid-template-columns: repeat(4, 85px);
+    grid-template-rows: minmax(100px, auto);
+  }
+} */
 .output {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-end;
   grid-column: 1/-1;
+  width: 216px;
+  /* height: auto; */
   margin-block: 1rem;
   padding: .3rem;
+  word-wrap: break-word;
+  word-break: break-all;
   border-radius: 0.4rem;
   transition: var(--ff-transition);
   background: var(--secondary-bg);
+}
+@media (min-width: 40em) {
+  .output {
+    width: 336px;
+  }
 }
 .previous-operand {
   color: var(--text-400);
@@ -261,17 +280,29 @@ body {
   place-content: center;
   background: var(--toggle-bg);
   transition: var(--ff-transition);
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: minmax(30px, auto) repeat(4, auto);
+  grid-template-columns: repeat(4, 40px);
+  grid-template-rows: repeat(5, 40px);
+}
+@media (min-width: 40em) {
+  :root {
+    --fs-300: 1.5rem;
+  }
+  .btn-grid {
+  grid-template-columns: repeat(4, 70px);
+  grid-template-rows: repeat(5, 70px);
+  /* background: red; */
+  }
 }
 .btn-grid > button {
-  font-size: var(--fs-600);
-  padding: .3rem;
+  font-size: var(--fs-300);
+  /* padding: 1rem; */
+  /* margin: 0.4rem; */
   cursor: pointer;
   border: none;
+  outline: none;
   border-radius: 0.5rem;
   transition: var(--ff-transition);
-  border-bottom: 5px solid var(--key-shadow-400);
+  border-bottom: 4px solid var(--key-shadow-400);
 }
 @media (min-width: 30em) {
   .btn-grid > button:hover {
