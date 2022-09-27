@@ -34,6 +34,7 @@ class Calculator {
     }
 }
 
+const RippleButton = document.querySelectorAll('.ripple')
 const toggleBtn = document.querySelector('.toggle-btn');
 const Body = document.getElementById('body')
 const NumberedButton = document.querySelectorAll('[data-number]')
@@ -75,4 +76,19 @@ toggleBtn.addEventListener('click', ()=> {
 })
 
 
+
+// Basic Ripple and Click Effect 
+RippleButton.forEach(ripples => {
+    ripples.addEventListener('click', function(e) {
+        let x = e.clientX - e.target.offsetLeft;
+             let y = e.clientY - e.target.offsetTop;
+             let ripple = document.createElement("span");
+             ripple.style.left = `${x}px`;
+             ripple.style.top = `${y}px`;
+             this.appendChild(ripple);
+             setTimeout(function(){
+               ripple.remove();
+             }, 600);
+    })
+})
 

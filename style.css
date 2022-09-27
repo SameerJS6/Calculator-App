@@ -178,7 +178,7 @@ body {
 .main-container {
   /* width: 300px; */
 	max-width: 1440px;
-  margin-inline: 1rem;
+  margin: 1rem;
   outline:2px solid red;
   padding: 1rem;
   font-weight: var(--fw-700);
@@ -301,6 +301,8 @@ body {
   }
 }
 .btn-grid > button {
+  position: relative;
+  overflow: hidden;
   font-size: var(--fs-300);
   /* padding: 1rem; */
   /* margin: 0.4rem; */
@@ -313,11 +315,29 @@ body {
   transition: var(--ff-transition);
   border-bottom: 4px solid var(--key-shadow-400);
 }
-
+.btn-grid > button > span{
+  position: absolute;
+  background: var(--key-shadow);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: ripples 1s linear infinite;
+}
+@keyframes ripples {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.5;
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+}
 @media (min-width: 30em) {
   .btn-grid > button:hover {
-    /* background-color: var(--bg); */
-    transform: translateY(-3px);
+    transform: translateY(-2px);
   }
 }
 .span-2 {
@@ -326,7 +346,7 @@ body {
 /* Attributions  */
 .attribution { 
     font-size: 12px; 
-    margin: 1rem;
+    margin-bottom: 0.3rem;
     text-align: center; 
     color: var(--text-500);
     transition: var(--ff-transition);
@@ -339,7 +359,6 @@ body {
 .attribution a:hover {
   color: var(--key-shadow);
 }
-
 
 /* Background Utility Classes  */
 
@@ -355,3 +374,4 @@ body {
   color: var(--text-200) !important;
   transition: var(--ff-transition);
 }
+
