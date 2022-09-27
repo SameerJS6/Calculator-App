@@ -4,6 +4,7 @@
     --bg: hsl(0, 0%, 90%);
     --toggle-bg: hsl(0, 5%, 81%);
     --secondary-bg: hsl(0, 0%, 93%);
+    --hover-bg: hsl(0, 0%, 93%);
 
     /* Keys */
     --key-bg: hsl(185, 42%, 37%);
@@ -170,12 +171,12 @@ body {
 .main-container {
   width: 300px;
 	max-width: 1440px;
-  /* width: 300px;
-  max-width: 80rem; */
   margin-inline: 1rem;
-  /* outline:2px solid red; */
+  outline:2px solid red;
   padding: 1rem;
   font-weight: var(--fw-700);
+  /* width: 300px;
+  max-width: 80rem; */
 }
 .head {
   display: flex;
@@ -231,10 +232,7 @@ body {
 }
 
 /* Main-Calculator  */
-.calculator-grid {
-  display: grid;
-  max-width: 500px;
-}
+
 .output {
   display: flex;
   flex-direction: column;
@@ -264,14 +262,22 @@ body {
   background: var(--toggle-bg);
   transition: var(--ff-transition);
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: minmax(30px, auto) repeat(4, 1fr);
+  grid-template-rows: minmax(30px, auto) repeat(4, auto);
 }
 .btn-grid > button {
+  font-size: var(--fs-600);
+  padding: .3rem;
   cursor: pointer;
   border: none;
   border-radius: 0.5rem;
   transition: var(--ff-transition);
-  border-bottom: 2px solid var(--key-shadow-400);
+  border-bottom: 5px solid var(--key-shadow-400);
+}
+@media (min-width: 30em) {
+  .btn-grid > button:hover {
+    background-color: var(--hover-bg);
+    transform: translateY(-5px);
+  }
 }
 .span-2 {
   grid-column: span 2;
