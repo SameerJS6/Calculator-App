@@ -8,7 +8,7 @@ class Calculator {
     clear() {
         this.PreviousOperandElement = ''
         this.CurrentOperandElement = ''
-        this.operation = undefined
+        this.operation = ''
     }
 
     delete() {
@@ -21,7 +21,13 @@ class Calculator {
     }
 
     SelectOperation(operation) {
-
+        if(this.CurrentOperandElement === '') return 
+        if(this.PreviousOperandElement != '') {
+            this.compute()
+        }
+        this.operation = operation  
+        this.PreviousOperandElement = this.CurrentOperandElement
+        this.CurrentOperandElement = ''
     }
 
     compute() {
@@ -30,7 +36,7 @@ class Calculator {
 
     UpdateDisplay() {
         this.CurrentOperand.innerText = this.CurrentOperandElement
-        this.PreviousOperand.innerText = this.PreviousOperandElement
+        this.PreviousOperand.innerText = `${this.PreviousOperandElement} ${this.operation}`
     }
 }
 
@@ -54,7 +60,13 @@ NumberedButton.forEach(button => {
         calculator.UpdateDisplay()
     })
 })
-
+OperationButton.forEach(operation => {
+    operation.addEventListener('click', ()=> {
+        console.log(operation.innerText)
+        calculator.SelectOperation(operation.innerText)
+        calculator.UpdateDisplay()
+    })
+})
 AllClear.addEventListener('click', ()=> {
         calculator.clear()
         calculator.UpdateDisplay()

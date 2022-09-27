@@ -241,7 +241,7 @@ body {
 /* Main-Calculator  */
 .calculator-grid {
   display: grid;
-  grid-template-rows: minmax(100px, auto) ;
+  grid-template-rows: minmax(120px, auto) ;
   /* grid-template-columns: 60px; */
 }
 /* @media (min-width: 40em) {
