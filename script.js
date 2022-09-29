@@ -37,20 +37,19 @@ class Calculator {
         if(isNaN(previous) || isNaN(current)) return 
 
         switch(this.operation) {
-            case"+": computation = previous + current
+            case "+": computation = previous + current
             break;
-            case"-": computation = previous - current
+            case "-": computation = previous - current
             break;
-            case"*": computation = previous * current
+            case "*": computation = previous * current
             break;
-            case"÷": computation = previous / current
+            case "÷": computation = previous / current
             break;
-            // case"%": computation = (previous / current) * 100
+            // case "%": computation = (previous / current) * 100
             // break;  Another way of percentage (Previous is what percent of Current)
-            case"%": computation = (previous / 100) * current
+            case "%": computation = (previous / 100) * current
             break;  //(Previous percent of Current) Google Calculator Uses this Method to calculate Percentage.
             default: return
-            break;
         }
 
         this.CurrentOperandElement = computation
@@ -58,9 +57,33 @@ class Calculator {
         this.PreviousOperandElement = ''
     }
 
+    GetDisplay(number) {
+        const stringNumber = number.toString()
+        const IntergerDigit = parseFloat(stringNumber.split('.')[0])
+        const DecimalDigit = stringNumber.split('.')[1]
+        let IntergerDisplay
+
+        if(isNaN(IntergerDigit)) {
+            IntergerDisplay = ''
+        } else {
+            IntergerDisplay = IntergerDigit.toLocaleString('en', {maximumFractionDigits: 0})
+        }
+
+        if(DecimalDigit != null) {
+            return `${IntergerDisplay}.${DecimalDigit}`
+        } else {
+            return IntergerDisplay
+        }
+    }
+
     UpdateDisplay() {
-        this.CurrentOperand.innerText = this.CurrentOperandElement
-        this.PreviousOperand.innerText = `${this.PreviousOperandElement} ${this.operation}`
+        this.CurrentOperand.innerText = this.GetDisplay(this.CurrentOperandElement)
+        // this.PreviousOperand.innerText = `${this.PreviousOperandElement} ${this.operation}`
+        if(this.operation != null) {
+            this.PreviousOperand.innerText = `${this.GetDisplay(this.PreviousOperandElement)} ${this.operation}`
+        } else {
+            this.PreviousOperandElement.innerText = ''
+        }
     }
 }
 

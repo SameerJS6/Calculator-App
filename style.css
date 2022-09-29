@@ -165,9 +165,7 @@ select {
 /* General Styling  */
 body {
     display: grid;
-    /* width: 100%; */
 	  max-width: 1440px;
-    /* width: 95%; */
     margin-inline: auto;
     min-height: 100vh;
     place-content: center;
@@ -176,14 +174,14 @@ body {
     transition: var(--ff-transition);
 }
 .main-container {
-  /* width: 300px; */
-	max-width: 1440px;
+  max-width: 1440px;
   margin: 1rem;
-  outline:2px solid red;
   padding: 1rem;
   font-weight: var(--fw-700);
-  /* width: 300px;
-  max-width: 80rem; */
+  /* width: 300px; */
+   /* width: 300px; */
+  /* max-width: 80rem; */
+  /* outline: 2px solid red; */
 }
 .head {
   display: flex;
@@ -191,6 +189,7 @@ body {
   align-items: center;
   color: var(--text-500);
   transition: var(--ff-transition);
+  
 }
 .theming {
   display: flex;
@@ -203,6 +202,7 @@ body {
   text-transform: uppercase;
   font-size: var(--fs-200);
 }
+
 /* Toggle Button & Background  */
 .toggle-bg {
   position: relative;
@@ -230,6 +230,7 @@ body {
   cursor: pointer;
   transition: var(--ff-transition);
   background: var(--toggle-btn-bg);
+  animation: SlideIn 2s ease both 0.3s;
 }
 .toggle-center {
   left: 38%;
@@ -242,14 +243,8 @@ body {
 .calculator-grid {
   display: grid;
   grid-template-rows: minmax(120px, auto) ;
-  /* grid-template-columns: 60px; */
 }
-/* @media (min-width: 40em) {
-  .calculator-grid {
-    grid-template-columns: repeat(4, 85px);
-    grid-template-rows: minmax(100px, auto);
-  }
-} */
+
 .output {
   display: flex;
   flex-direction: column;
@@ -257,7 +252,6 @@ body {
   align-items: flex-end;
   grid-column: 1/-1;
   width: 216px;
-  /* height: auto; */
   margin-block: 1rem;
   padding: .3rem;
   word-wrap: break-word;
@@ -287,6 +281,7 @@ body {
   place-content: center;
   background: var(--toggle-bg);
   transition: var(--ff-transition);
+  animation: TopBtn 2s ease both 0.2s;
   grid-template-columns: repeat(4, 40px);
   grid-template-rows: repeat(5, 40px);
 }
@@ -297,15 +292,12 @@ body {
   .btn-grid {
   grid-template-columns: repeat(4, 70px);
   grid-template-rows: repeat(5, 70px);
-  /* background: red; */
   }
 }
 .btn-grid > button {
   position: relative;
   overflow: hidden;
   font-size: var(--fs-300);
-  /* padding: 1rem; */
-  /* margin: 0.4rem; */
   cursor: pointer;
   border: none;
   outline: none;
@@ -313,10 +305,11 @@ body {
   color: var(--text-600);
   background: var(--key-bg-400);
   transition: var(--ff-transition);
+  animation: TopIn 2s ease both 0.25s;
   border-bottom: 4px solid var(--key-shadow-400);
 }
 .btn-grid > button > span{
-  position: absolute;
+  position: absolute ;
   background: var(--key-shadow);
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -343,25 +336,8 @@ body {
 .span-2 {
   grid-column: span 2;
 }
-/* Attributions  */
-.attribution { 
-    font-size: 12px; 
-    margin-bottom: 0.3rem;
-    text-align: center; 
-    color: var(--text-500);
-    transition: var(--ff-transition);
-}
-.attribution a {
-    text-decoration: none;
-    color: var(--text-500); 
-    transition: var(--ff-transition);
-}
-.attribution a:hover {
-  color: var(--key-shadow);
-}
 
 /* Background Utility Classes  */
-
 .key-bg-two {
   background: var(--toggle-btn-bg) !important;
   border-color: var(--key-shadow-500) !important;
@@ -375,3 +351,129 @@ body {
   transition: var(--ff-transition);
 }
 
+/* Animations and Animation Utility Classes  */
+
+.OpacityIn {
+  animation: Opacity 2s ease both .5s;
+}
+.TopIn {
+  animation: TopIn 2s ease both .5s;
+}
+.TopIn-1 {
+  animation: TopIn 2s ease both 0.25s;
+}
+.SlideInOut {
+  animation: SlideInOut 3s ease both 0.2s;
+}
+.TopDown {
+  animation: TopDown 2s ease both .45s;
+}
+.Index {
+  animation: Index 2s ease both;
+}
+
+@keyframes TopBtn {
+  0%{
+    translate: (0px, 30px);
+    opacity: 0;
+  }
+  50% {
+    translate: (0px, -30px);
+  }
+  100% {
+    translate: (0px, 0px);
+    opacity: 1;
+  }
+}
+
+@keyframes TopIn {
+  0%{
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes SlideIn {
+  0%{
+    transform: translateX(80px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-8px);
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes SlideInOut {
+  0%{
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes TopDown  {
+  0% {
+    transform: translateY(-150px);
+    z-index: -1;
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes Opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes Index {
+  from {
+    z-index: -1;
+  }
+  to {
+    z-index: 1;
+  }
+}
+
+
+/* Attributions  */
+.attribution { 
+  font-size: 12px; 
+  margin-bottom: 0.3rem;
+  text-align: center; 
+  color: var(--text-500);
+  transition: var(--ff-transition);
+}
+.attribution a {
+  text-decoration: none;
+  color: var(--text-500); 
+  transition: var(--ff-transition);
+}
+.attribution a:hover {
+color: var(--key-shadow);
+}
