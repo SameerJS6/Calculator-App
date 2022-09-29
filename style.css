@@ -259,7 +259,7 @@ body {
   justify-content: space-around;
   align-items: flex-end;
   grid-column: 1/-1;
-  width: 216px;
+  width: 256px;
   margin-block: 1rem;
   padding: .3rem;
   word-wrap: break-word;
@@ -294,8 +294,8 @@ body {
   background: var(--toggle-bg);
   transition: var(--ff-transition);
   animation: TopBtn 2s ease both 0.2s;
-  grid-template-columns: repeat(4, 40px);
-  grid-template-rows: repeat(5, 40px);
+  grid-template-columns: repeat(4, 50px);
+  grid-template-rows: repeat(5, 50px);
 }
 
 @media (min-width: 40em) {
