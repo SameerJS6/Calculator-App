@@ -31,7 +31,31 @@ class Calculator {
     }
 
     compute() {
+        let computation 
+        const previous = parseFloat(this.PreviousOperandElement)
+        const current = parseFloat(this.CurrentOperandElement)
+        if(isNaN(previous) || isNaN(current)) return 
 
+        switch(this.operation) {
+            case"+": computation = previous + current
+            break;
+            case"-": computation = previous - current
+            break;
+            case"*": computation = previous * current
+            break;
+            case"÷": computation = previous / current
+            break;
+            // case"%": computation = (previous / current) * 100
+            // break;  Another way of percentage (Previous is what percent of Current)
+            case"%": computation = (previous / 100) * current
+            break;  //(Previous percent of Current) Google Calculator Uses this Method to calculate Percentage.
+            default: return
+            break;
+        }
+
+        this.CurrentOperandElement = computation
+        this.operation = ''
+        this.PreviousOperandElement = ''
     }
 
     UpdateDisplay() {
@@ -62,7 +86,7 @@ NumberedButton.forEach(button => {
 })
 OperationButton.forEach(operation => {
     operation.addEventListener('click', ()=> {
-        console.log(operation.innerText)
+        // console.log(operation.innerText)
         calculator.SelectOperation(operation.innerText)
         calculator.UpdateDisplay()
     })
@@ -75,6 +99,11 @@ AllClear.addEventListener('click', ()=> {
 DeleteButton.addEventListener('click', ()=> {
         calculator.delete()
         calculator.UpdateDisplay()
+})
+
+EqualsButton.addEventListener( 'click', ()=> {
+    calculator.compute()
+    calculator.UpdateDisplay()
 })
 toggleBtn.addEventListener('click', ()=> {
     if(toggleBtn.classList.contains('toggle-center')) {
